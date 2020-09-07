@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Register</title>
+  <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="shortcut icon" href="assets/images/toplant%C4%B1logo.fw.ico">
+    <link rel="icon" href="assets/images/toplant%C4%B1logo.fw.png"type="image/gif">
+</head>
+<body>
+  <main>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6 login-section-wrapper">
+          <div class="brand-wrapper">
+            <img src="assets/images/" alt="logo" class="logo">
+          </div>
+          <div class="login-wrapper my-auto">
+            <h1 class="login-title">Register</h1>
+            <form action="#!">
+              <div class="form-group">
+                  
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" class="form-control"placeholder="email@example.com "><br>   
+                  
+              </div>   
+              <div class="form-group mb-6">
+                  
+                <label for="password">Password</label>          
+                <input type="password" name="password" id="password" class="form-control " placeholder="enter your passsword"
+                minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"><br><br> 
+                  
+              </div>
+              <input name="login" id="login" class="btn btn-block login-btn" type="submit" value="Register" >
+            </form>
+            <a href="forget_password.html" class="forgot-password-link">Forgot password?</a><br>
+
+            <p class="login-wrapper-footer-text">Do you have an account? <a href="login.html" class="text-reset">Sign in</a></p>
+          </div>
+            
+            <div id="message">
+            <h3>Password must contain the following:</h3>
+            <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+            <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+            <p id="number" class="invalid">A <b>number</b></p>
+            <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+            </div>
+            
+        </div>
+        <div class="col-sm-6 px-0 d-none d-sm-block">
+          <img src="assets/images/1234.fw.png"width="100" height="100" alt="login image" class="login-img">
+        </div>
+      </div>
+    </div>
+  </main>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+</body>
+    <script>
+var myInput = document.getElementById("password");
+var letter = document.getElementById("letter");
+var capital = document.getElementById("capital");
+var number = document.getElementById("number");
+var length = document.getElementById("length");
+
+// When the user clicks on the password field, show the message box
+myInput.onfocus = function() {
+  document.getElementById("message").style.display = "block";
+}
+
+// When the user clicks outside of the password field, hide the message box
+myInput.onblur = function() {
+  document.getElementById("message").style.display = "none";
+}
+
+// When the user starts to type something inside the password field
+myInput.onkeyup = function() {
+  // Validate lowercase letters
+  var lowerCaseLetters = /[a-z]/g;
+  if(myInput.value.match(lowerCaseLetters)) {  
+    letter.classList.remove("invalid");
+    letter.classList.add("valid");
+  } else {
+    letter.classList.remove("valid");
+    letter.classList.add("invalid");
+  }
+  
+  // Validate capital letters
+  var upperCaseLetters = /[A-Z]/g;
+  if(myInput.value.match(upperCaseLetters)) {  
+    capital.classList.remove("invalid");
+    capital.classList.add("valid");
+  } else {
+    capital.classList.remove("valid");
+    capital.classList.add("invalid");
+  }
+
+  // Validate numbers
+  var numbers = /[0-9]/g;
+  if(myInput.value.match(numbers)) {  
+    number.classList.remove("invalid");
+    number.classList.add("valid");
+  } else {
+    number.classList.remove("valid");
+    number.classList.add("invalid");
+  }
+  
+  // Validate length
+  if(myInput.value.length >= 8) {
+    length.classList.remove("invalid");
+    length.classList.add("valid");
+  } else {
+    length.classList.remove("valid");
+    length.classList.add("invalid");
+  }
+}
+</script>
+</html>
