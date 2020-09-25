@@ -3,7 +3,7 @@ CREATE DATABASE IF NOT EXISTS meet_booking CHARACTER SET utf8mb4 COLLATE utf8mb4
 
 #Calışanlar Tablosu
 CREATE TABLE meet_booking.employees (
-id          INT(10)         NOT NULL,
+id          INT(10)         NOT NULL AUTO_INCREMENT,
 status      CHAR(1) NOT NULL DEFAULT 'a' COMMENT 'Record status. a: active, d: deleted, i: inactive',
 birth_date  DATE            NULL,
 first_name  VARCHAR(14)     NOT NULL,
@@ -17,7 +17,7 @@ PRIMARY KEY (id)
 
 #departmanlar tablosu
 CREATE TABLE meet_booking.departments (
-id          INT(10)         NOT NULL,
+id          INT(10)         NOT NULL AUTO_INCREMENT,
 status      CHAR(1) NOT NULL DEFAULT 'a' COMMENT 'Record status. a: active, d: deleted, i: inactive',
 dept_name   VARCHAR(40)     NOT NULL,
 created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -27,7 +27,7 @@ PRIMARY KEY (id)
 
 
 CREATE TABLE meet_booking.employees_of_departments (
-employee    INT(10)     NOT NULL,
+employee    INT(10)     NOT NULL AUTO_INCREMENT,
 status      CHAR(1) NOT NULL DEFAULT 'a' COMMENT 'Record status. a: active, d: deleted, i: inactive',
 department INT(10)     NOT NULL,
 from_date   DATE        NOT NULL,
@@ -41,7 +41,7 @@ FOREIGN KEY (department) REFERENCES departments (id) ON DELETE CASCADE
 );
 
 CREATE TABLE meet_booking.meet_rooms (
-id          INT(10)     NOT NULL,
+id          INT(10)     NOT NULL AUTO_INCREMENT,
 status      CHAR(1) NOT NULL DEFAULT 'a' COMMENT 'Record status. a: active, d: deleted, i: inactive',
 name  VARCHAR(250)      NOT NULL,
 size  INT(15)           NULL DEFAULT 50,
@@ -54,7 +54,7 @@ PRIMARY KEY (id)
 
 
 CREATE TABLE meet_booking.meet_reservation (
-id           INT(10)     NOT NULL,
+id           INT(10)     NOT NULL AUTO_INCREMENT,
 start        DATETIME NULL,
 end          DATETIME NULL,
 employee     INT(10)     NOT NULL,
@@ -72,7 +72,7 @@ FOREIGN KEY (meet_room) REFERENCES meet_rooms (id) ON DELETE CASCADE
 
 
 CREATE TABLE meet_booking.meet_available_schedule (
-id          INT(10)     NOT NULL,
+id          INT(10)     NOT NULL AUTO_INCREMENT,
 time_occupied_start     DATETIME NOT NULL,
 time_occupied_end       DATETIME NOT NULL,
 reservation             INT(10) NULL,
